@@ -1,1 +1,146 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><!--    Copyright (C) 2005 June R. Tate <june@theonelab.com>        This file is a part of DashBlog.    DashBlog is free software; you can redistribute it and/or modify    it under the terms of the GNU General Public License as published    by the Free Software Foundation; either version 2 of the License,    or (at your option) any later version.         DashBlog is distributed in the hope that it will be useful, but    WITHOUT ANY WARRANTY; without even the immplied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU    General Public License for more details.         You should have received a copy of the GNU General Public License    along with DashBlog; if not, write to the Free Software Foundation,    Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA   --><html xmlns="http://www.w3.org/1999/xhtml">  <head>    <title>DashBlog</title>    <link rel="stylesheet" type="text/css" href="DashBlog.css" />    <script language="JavaScript" type="text/javascript" src="DashBlog.js" />    <script language="JavaScript" type="text/javascript" src="file:///System/Library/WidgetResources/button/genericButton.js" />  </head>  <body onLoad="setTimeout('initializeWidget();', 100);">    <div id="successmsg" onMouseUp="successmsg.hide();">Posting Successful</div>          <div id="error">      <div id="errorTitle" class="errorTitle">&nbsp;</div>      <div id="errorBody"  class="errorBody">&nbsp;</div>            <table border="0" align="center" width="100%" height="100%" cellspacing="5">        <tr>          <td align="left" valign="bottom"><div class="button" id="buttonSendBug"></div></td>          <td align="right" valign="bottom"><div class="button" id="buttonDismissError"></div></td>        </tr>      </table>    </div>        <div id="content" onMouseOver="fliprollover.show();" onMouseOut="fliprollover.hide();">      <div id="bar">        <table align="center" width="100%" cellspacing="0" cellpadding="0">          <tr>            <td id="barLeft">&nbsp;</td>            <td id="barSelector">              <img id="selectorImage" src="images/selector.png" />              <span id="selectorText"></span>              <select id="config_blogid" onChange="dashblog.updateSelector();"></select>            </td>            <td id="barButtons" align="right">              <div class="button" id="buttonNewPost"></div>              <div class="button" id="buttonConfig"></div>            </td>            <td id="barRight">&nbsp;</td>          </tr>        </table>      </div>      <div id="form">        <table border="0" align="center" width="100%" height="100%" cellpadding="0" cellspacing="0">          <tr>            <td><img src="images/form-border-ul.png" height="100%" width="9" /></td>            <td class="formMiddle" id="formBody" valign="top" colspan="3">              <table id="formTable" border="0" align="center" width="100%" height="100%" cellspacing="3" cellpadding="0">              </table>            </td>            <td><img src="images/form-border-ur.png" height="100%" width="9" /></td>          </tr>          <tr>            <td><img src="images/form-border-ml.png" height="100%" width="9" /></td>            <td class="formFooter" align="left" valign="bottom" width="33%">              <img id="flipper" src="file:///System/Library/WidgetResources/ibutton/white_i.png" width="12" height="12" />              <img id="fliprollie" src="file:///System/Library/WidgetResources/ibutton/white_rollie.png" width="12" height="12" onMouseOver="this.style.opacity=0.35;" onMouseOut="this.style.opacity=0.0" onMouseDown="dashblog.showBack(); this.style.opacity=0.0;" />            </td>            <td class="formFooter" align="center" valign="bottom" width="33%">              <img id="blogSpinner" src="images/spinner.gif" />            </td>            <td class="formFooter" align="right" valign="bottom" width="33%">              <img id="resize" src="file:///System/Library/WidgetResources/resize.png" width="12" height="12" onMouseDown="resizer.resizeEvent(event);" />            </td>            <td><img src="images/form-border-mr.png" height="100%" width="9" /></td>          </tr>          <tr>            <td valign="top"><img src="images/form-border-bl.png" width="9" height="14" /></td>            <td colspan="3"><img src="images/form-border-bm.png" width="100%" height="14" /></td>            <td valign="top"><img src="images/form-border-br.png" width="9" height="14" /></td>          </tr>        </table>      </div>    </div>        <div id="config">      <div id="configForm">        <table border="0" align="center" width="100%" height="100%">          <tr>            <td>Blog Type</td>            <td>              <select id="config_blogtype" size="1" onChange="dashblog.checkBlogType();">                <option value="bapi2">Blogger.com Hosted Blog</option>                <option value="bapi1">Self-run via BloggerAPI</option>              </select>            </td>          </tr>          <tr>            <td>API URL</td>            <td><input type="text" id="config_url" disabled="true" /></td>          </tr>          <tr>            <td>Username</td>            <td><input type="text" id="config_username" /></td>          </tr>          <tr>            <td>Password</td>            <td><input type="password" id="config_password" /></td>          </tr>          <tr>            <td>Leave Form Open</td>            <td>              <select id="config_leaveopen" size="1">                <option value="0">No</option>                <option value="1">Yes</option>              </select>            </td>          </tr>          <tr>            <td colspan="2" valign="bottom">              <div id="aboutText">                DashBlog was created by <a href="#" onClick="widget.openURL('mailto:june@theonelab.com?subject=[DashBlog] ');">June                Tate</a>. This widget is considered free software, and is covered under the terms of the GNU GPL.                The latest version is available <a href="#" onClick="widget.openURL('http://dashblog.theonelab.com');">here</a>.                <b id="version"></b>              </div>              <div id="buttonDone"></div>            </td>          </tr>        </table>      </div>    </div>  </body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--
+    Copyright (C) 2005 June R. Tate <june@theonelab.com>
+    
+    This file is a part of DashBlog.
+
+    DashBlog is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published
+    by the Free Software Foundation; either version 2 of the License,
+    or (at your option) any later version. 
+    
+    DashBlog is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the immplied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    General Public License for more details. 
+    
+    You should have received a copy of the GNU General Public License
+    along with DashBlog; if not, write to the Free Software Foundation,
+    Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+  -->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>DashBlog</title>
+    <link rel="stylesheet" type="text/css" href="DashBlog.css" />
+    <script language="JavaScript" type="text/javascript" src="DashBlog.js" />
+    <script language="JavaScript" type="text/javascript" src="file:///System/Library/WidgetResources/button/genericButton.js" />
+  </head>
+
+  <body onLoad="setTimeout('initializeWidget();', 100);">
+    <div id="successmsg" onMouseUp="successmsg.hide();">Posting Successful</div>
+      
+    <div id="error">
+      <div id="errorTitle" class="errorTitle">&nbsp;</div>
+      <div id="errorBody"  class="errorBody">&nbsp;</div>
+      
+      <table border="0" align="center" width="100%" height="100%" cellspacing="5">
+        <tr>
+          <td align="left" valign="bottom"><div class="button" id="buttonSendBug"></div></td>
+          <td align="right" valign="bottom"><div class="button" id="buttonDismissError"></div></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div id="content" onMouseOver="fliprollover.show();" onMouseOut="fliprollover.hide();">
+      <div id="bar">
+        <table align="center" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td id="barLeft">&nbsp;</td>
+            <td id="barSelector">
+              <img id="selectorImage" src="images/selector.png" />
+              <span id="selectorText"></span>
+              <select id="config_blogid" onChange="dashblog.updateSelector();"></select>
+            </td>
+            <td id="barButtons" align="right">
+              <div class="button" id="buttonNewPost"></div>
+              <div class="button" id="buttonConfig"></div>
+            </td>
+            <td id="barRight">&nbsp;</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="form">
+        <table border="0" align="center" width="100%" height="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><img src="images/form-border-ul.png" height="100%" width="9" /></td>
+            <td class="formMiddle" id="formBody" valign="top" colspan="3">
+              <table id="formTable" border="0" align="center" width="100%" height="100%" cellspacing="3" cellpadding="0">
+              </table>
+            </td>
+            <td><img src="images/form-border-ur.png" height="100%" width="9" /></td>
+          </tr>
+          <tr>
+            <td><img src="images/form-border-ml.png" height="100%" width="9" /></td>
+            <td class="formFooter" align="left" valign="bottom" width="33%">
+              <img id="flipper" src="file:///System/Library/WidgetResources/ibutton/white_i.png" width="12" height="12" />
+              <img id="fliprollie" src="file:///System/Library/WidgetResources/ibutton/white_rollie.png" width="12" height="12" onMouseOver="this.style.opacity=0.35;" onMouseOut="this.style.opacity=0.0" onMouseDown="dashblog.showBack(); this.style.opacity=0.0;" />
+            </td>
+            <td class="formFooter" align="center" valign="bottom" width="33%">
+              <img id="blogSpinner" src="images/spinner.gif" />
+            </td>
+            <td class="formFooter" align="right" valign="bottom" width="33%">
+              <img id="resize" src="file:///System/Library/WidgetResources/resize.png" width="12" height="12" onMouseDown="resizer.resizeEvent(event);" />
+            </td>
+            <td><img src="images/form-border-mr.png" height="100%" width="9" /></td>
+          </tr>
+          <tr>
+            <td valign="top"><img src="images/form-border-bl.png" width="9" height="14" /></td>
+            <td colspan="3"><img src="images/form-border-bm.png" width="100%" height="14" /></td>
+            <td valign="top"><img src="images/form-border-br.png" width="9" height="14" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <div id="config">
+      <div id="configForm">
+        <table border="0" align="center" width="100%" height="100%">
+          <tr>
+            <td>Blog Type</td>
+            <td>
+              <select id="config_blogtype" size="1" onChange="dashblog.checkBlogType();">
+                <option value="bapi2">Blogger.com Hosted Blog</option>
+                <option value="bapi1">Self-run via BloggerAPI</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>API URL</td>
+            <td><input type="text" id="config_url" disabled="true" /></td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td><input type="text" id="config_username" /></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input type="password" id="config_password" /></td>
+          </tr>
+          <tr>
+            <td>Leave Form Open</td>
+            <td>
+              <select id="config_leaveopen" size="1">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" valign="bottom">
+              <div id="aboutText">
+                DashBlog was created by <a href="#" onClick="widget.openURL('mailto:june@theonelab.com?subject=[DashBlog] ');">June
+                Tate</a>. This widget is considered free software, and is covered under the terms of the GNU GPL.
+                The latest version is available <a href="#" onClick="widget.openURL('http://dashblog.theonelab.com');">here</a>.
+                <b id="version"></b>
+              </div>
+              <div id="buttonDone"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
