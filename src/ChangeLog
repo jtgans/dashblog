@@ -1,0 +1,93 @@
+2005-05-26  June Tate  <june.t@pm121.com>
+
+	* DashBlog.css: Added the fixes to add in the about text and
+	handle the new back image.
+
+	* DashBlog.js: Added code to resize the widget properly when
+	switching back and forth from the front and back. Additionally
+	added version information to the global symbol "_version".
+
+	* DashBlog.html: Added the about text and version to the back.
+
+2005-05-25  June Tate  <june.t@pm121.com>
+
+	* Too many changes to list! I've completely redesigned the widget!
+
+2005-05-05  June Tate  <june.t@pm121.com>
+
+	* library.js: Fixed an issue relating to a BloggerAPI publish
+	boolean value being set to "true" instead of 1.
+
+	* Info.plist: Incremented the version number.
+
+	* version.plist: Incremented the version number.
+
+	* DashBlog.html: Incremented the version number.
+
+2005-05-03  June Tate  <june.t@pm121.com> v0.9b
+
+	* Info.plist: Incremented the version number.
+
+	* version.plist: Incremented the version number.
+
+	* DashBlog.html: Incremented the version number.
+
+	* library.js: Fixed a major showstopper that was preventing posts
+	from actually going through if they contained an
+	ampersand. Additionally fixed a minor issue that prevented the
+	title and body text fields from being cleared.
+
+2005-05-01  June Tate  <june.t@pm121.com> v0.8b
+
+	* library.js, DashBlog.html: Completely restructured the backend
+	code. Now the system supports Blogger2, Blogger1, both hosted at
+	Blogger.com and self run. Self run blogs will allow changing of
+	the XML-RPC URL, while Blogger.com hosted blogs will only allow
+	posting to the plant.blogger.com URL.
+
+2005-04-13  June Tate  <june.t@pm121.com> v0.7b
+
+	* library.js: Added code to use the new blogger2 API to support
+	titles (yay!)
+
+	* library.js: Fixed up a bunch of the HTML entities to make
+	unicode characters > code 160 appear as &#xNNNN;
+	entities. Additionally added support for &quot; and &amp;. This
+	fixes issues relating to the bad code posting to Blogger.
+
+	* library.js: Added an ISO8601 date generator to the mix.
+
+	* DashBlog.html: Updated the version number to read 0.7b.
+
+2005-04-09  June Tate  <june.t@pm121.com> v0.6b
+
+	* Major graphics rework and other enhancements.
+
+2005-04-09  June Tate  <june.t@pm121.com> v0.5b
+
+	* Info.plist: Added closebox X and Y locations, resized the widget
+
+	* Redesigned the widget's buttons and such to more closely match
+	the design of the Dashboard.
+	
+	* Cleaned up some code and removed some extraneous files.
+	
+	* Added an icon.
+	
+	* Fixed some JavaScript issues that prevented DashBlog from
+	running under Tiger.
+
+2005-03-31  June Tate  <june.t@pm121.com> v0.3b
+
+	* Info.plist: Added back into the bundle and bumped up the version
+	number.
+
+	* version.plist: Added the version.plist file to the bundle.
+	
+
+2005-03-28  June Tate  <june.t@pm121.com> v0.2b
+
+	* DashBlog.html: Changed the password field to a real password
+	field, and removed the defaults that linked to Slash 'N
+	Burn. *sheepish grin*
+

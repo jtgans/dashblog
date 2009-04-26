@@ -1,0 +1,10 @@
+Feature Requests: (*=implemented)
+        - Spell checking
+        - Multiple instances
+        - Color coding?
+        - Display the blog name somewhere on the front
+
+Bugs: (!=new, -=in-progress, *=bug resolved, ?=need more info)
+        ? Posting to blojsom doesn't work?
+        * BloggerAPI posts weren't publishing
+          - It was caused by a bad "boolean" value being sent via XMLRPC.
