@@ -1,0 +1,4 @@
+* Blogging from the MacOS X dashboard
+
+Dashblog is a simple blogging widget usable from the OSX dashboard. It was originally intended to work with
+Blogger API-based blogs, but has since grown an API interface.
